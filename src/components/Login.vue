@@ -48,10 +48,11 @@ export default {
                 if (!valid) {
                     return;
                 }
-               const {data : res} = await this.$http.post("test");
-               if (res =="ok") {
+               const {data : res} = await this.$http.post("login", this.loginForm);
+               if (res.flag =="ok") {
+                   window.sessionStorage.setItem("user", res.user);
                    this.$message.success("Operate successfully");
-                   this.$router.push({path: "/home"});
+                   this.$router.push({path: "/home"});                  
                } else {
                     this.$message.error("Operate failly");
                }

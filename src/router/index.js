@@ -24,5 +24,22 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+const originalPath = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location, onResolve, onReject) {
+  if (onResolve || onReject) {
+    return originalPath.call(this, location, onResolve, onReject);
+  }
+  return originalPath.call(this, location).catch(err => err);
+}
+router.beforeEach((to, from, next) => {
+  if (to.path == '/login') {
+    return next();
+  }
+  const userFlag = window.sessionStorage.getItem("user");
+  if (!userFlag) {
+    return next('/login');
+  }
+  next();
+})
 
 export default router
