@@ -3,21 +3,22 @@
         <el-header>
             <div>
                 <img src="../assets/homePage.png" alt="">
-                <span>Personal Sport Platform</span>
+                <span>Fitness management platform</span>
             </div>            
             <el-button type="info" @click="logout">Logout</el-button>
         </el-header>
   <el-container>
     <el-aside width="isCollapse?'64px':'200px'">
         <div class="toggle-button" @click="toggleCollapase">|||</div>
-        <el-menu background-color="#545c64" text-color="#fff" active-text-color="#409eff"
-        :collapse="isCollapse" :collapse-transition="false">
+        <el-menu background-color="#2a6691" text-color="#fff" active-text-color="#409eff"
+        :collapse="isCollapse" :collapse-transition="false" :router="true"
+        :default-active="activePath">
       <el-submenu :index="item.id + ''" v-for="item in menuList" :key="item.id">
         <template slot="title">
           <i :class="iconsObject[item.id]"></i>
           <span>{{item.title}}</span>
         </template>
-        <el-menu-item :index="it.id + ''" v-for="it in item.subMenuList" :key="it.id">
+        <el-menu-item :index="it.path" v-for="it in item.subMenuList" :key="it.id" @click="saveNavState(it.path)">
             <template slot="title">
           <i :class="iconsObject[it.id]"></i>
           <span>{{it.title}}</span>
@@ -27,7 +28,7 @@
     </el-menu>
     </el-aside>
     <el-main>
-        
+        <router-view></router-view>
     </el-main>
   </el-container>
 </el-container>
@@ -39,21 +40,23 @@ export default {
             menuList: [],
             isCollapse: false,
             iconsObject: {
-                '100':'iconfont icon-denglu',
-                '200':'iconfont icon-denglu',
+                '100':'iconfont icon-quanxianshezhi',
+                '200':'iconfont icon-yundong',
                 '101':'iconfont icon-denglu',
-                '102':'iconfont icon-denglu',
-                '103':'iconfont icon-denglu',
-                '104':'iconfont icon-denglu',
-                '201':'iconfont icon-denglu',
-                '202':'iconfont icon-denglu',
-                '203':'iconfont icon-denglu',
-                '204':'iconfont icon-denglu',
-            }
+                '102':'iconfont icon-quanxianshezhi',
+                '103':'iconfont icon-yundong',
+                '104':'iconfont icon-shiwu',
+                '201':'iconfont icon-gerenjianjie',
+                '202':'iconfont icon-qialuli',
+                '203':'iconfont icon-chifan2600',
+                '204':'iconfont icon-yundong-',
+            },
+            activePath: '/welcome',
         }
     },
     created() {
         this.getMenuList();
+        this.activePath = window.sessionStorage.getItem("activePath");
     },
     methods: {
         logout(){
@@ -69,16 +72,21 @@ export default {
         },
         toggleCollapase() {
             this.isCollapse = !this.isCollapse;
+        },
+        saveNavState(activePath) {
+            window.sessionStorage.setItem("activePath", activePath);
+            this.activePath = activePath;
         }
     }
 }
 </script>
 <style lang='less' scoped>
 .el-header {
-    background-color: #373d41;
+    background-color: #2a6691;
     display: flex;
     justify-content: space-between;
     padding-left: 0%;
+    align-items: center;
     color: #fff;
     font-size: 20px;
     >div {
@@ -90,7 +98,7 @@ export default {
     }
 }
 .el-aside {
-    background-color: #373d44;
+    background-color: #a1ca80;
     .el-menu {
         border-right: none;
     }

@@ -6,6 +6,41 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "435924",
+      "name": "卡路里",
+      "font_class": "qialuli",
+      "unicode": "e7b4",
+      "unicode_decimal": 59316
+    },
+    {
+      "icon_id": "5738996",
+      "name": "运动-18",
+      "font_class": "yundong-",
+      "unicode": "ee36",
+      "unicode_decimal": 60982
+    },
+    {
+      "icon_id": "6099310",
+      "name": "食物",
+      "font_class": "shiwu",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "6682542",
+      "name": "个人简介",
+      "font_class": "gerenjianjie",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "8710679",
+      "name": "权限设置",
+      "font_class": "quanxianshezhi",
+      "unicode": "e70b",
+      "unicode_decimal": 59147
+    },
+    {
       "icon_id": "436018",
       "name": "运动",
       "font_class": "yundong",

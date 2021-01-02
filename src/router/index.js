@@ -2,6 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
+import Welcome from '../components/Welcome.vue'
+import UerList from '../components/admin/UserList.vue'
+import Permission from '../components/Permission.vue'
+import Motion from '../components/Motion.vue'
+import Goods from '../components/Goods.vue'
+import Introduction from '../components/Introduction.vue'
+import Food from '../components/Food.vue'
+import Calories from '../components/Calories.vue'
 
 Vue.use(VueRouter)
 
@@ -16,7 +24,18 @@ const routes = [
   },
   {
     path: "/home",
-    component: Home
+    component: Home,
+    redirect: "/welcome",
+    children:[
+      {path: "/welcome", component: Welcome,},
+      {path: "/user", component: UerList,},
+      {path: "/rights", component: Permission,},
+      {path: "/sport", component: Motion,},
+      {path: "/goods", component: Goods,},
+      {path: "/introduction", component: Introduction,},
+      {path: "/food", component: Food,},
+      {path: "/calories", component: Calories,},
+    ]
   }
 
 ]
