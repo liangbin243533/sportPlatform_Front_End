@@ -1,19 +1,5 @@
 # sportflatform
+1. It is front-end code for the sport platfom
+2. Framework is Vue plus Element UI
+3. There are still some models to complete
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
